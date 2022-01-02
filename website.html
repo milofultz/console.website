@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+  /* Quality of Life Improvements */
+
+  const c = console;
+  const rems = [0, 3.375, 2.25, 1.5, 1];
+  const h = rems.map(n => `font-size: ${n}rem; font-weight: bold;`);
+  const bq = 'font-style: italic; margin-left: 2rem';
+  const endBq = 'font-style: normal; margin-left: 0;';
+
+  /* Stupid Functions */
+
+  rainbow = (text, format = '') => {
+    const rainbow = ['color: red;', 'color: orange;', 'color: yellow;', 'color: green;', 'color: blue;', 'color: rebeccapurple;'];
+    let rainbowCounter = 0;
+    const outputWords = [];
+    const outputFormat = [];
+    const words = text.split('');
+    words.forEach(word => {
+      outputWords.push('%c' + word);
+      outputFormat.push(rainbow[rainbowCounter++ % rainbow.length] + format);
+    });
+    return [outputWords.join(''), ...outputFormat];
+  };
+
+  /* Website content */
+
+  const articles = {
+    'Maybe we shouldn\'t have come down from the trees at all': [`\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Donec vel ullamcorper felis.
+
+%cSed aliquet pulvinar felis sed interdum. Sed tincidunt lobortis elit et malesuada.
+
+%cPraesent mollis, lorem non lacinia fermentum, quam lectus vestibulum sapien, tincidunt sollicitudin ipsum nibh quis sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent vel mauris vel metus pulvinar consectetur.`, bq, endBq],
+    'Who shit my pants?': ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ullamcorper felis. Sed aliquet pulvinar felis sed interdum. Sed tincidunt lobortis elit et malesuada. Praesent mollis, lorem non lacinia fermentum, quam lectus vestibulum sapien, tincidunt sollicitudin ipsum nibh quis sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent vel mauris vel metus pulvinar consectetur.'],
+    'What IS a computer?': [...rainbow('Cheese.')],
+  };
+
+  const projects = [
+    'Proquabet: https://github.com/milofultz/proquabet',
+    '{{SWIKI}}: https://github.com/milofultz/swiki',
+  ];
+
+  c.log('%cWelcome to Milo\'s website!', h[1]);
+  c.log('\tI always wanted to make a website like this. It\'s certainly not accessible, but it seemed like a fun idea. Might be a stupid way to keep a blog, but that\'s what makes it fun.');
+  c.groupCollapsed('%cBlog', h[2] + 'font-style: italic;')
+  for (const article in articles) {
+    c.groupCollapsed(`%c${article}`, h[3]);
+    c.log(...articles[article]);
+    c.groupEnd();
+  }
+  c.groupEnd();
+  c.groupCollapsed('%cProjects', h[2] + 'font-style: italic;');
+  projects.forEach(project => c.log(project));
+  c.groupEnd();
+  c.log('©2022 The Big CHEESE');
+</script>
