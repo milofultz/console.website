@@ -51,8 +51,8 @@ The story so far:
       wiki: 'http://www.tinybrain.fans'
     };
 
-    c.log('%cWelcome to Milo\'s website!', h[1]);
-    c.log('\tI always wanted to make a website like this. It\'s certainly not accessible, but it seemed like a fun idea. Might be a stupid way to keep a blog, but that\'s what makes it fun.');
+    c.log('%cWelcome to Milo\'s website!', h[1] + 'display: inline-block; background-image: linear-gradient(to top left, #884, #fff); border: 6px solid red; color: black; padding: 2rem 4rem; margin-bottom: 1rem;');
+    c.log('%c\tI always wanted to make a website like this. It\'s certainly not accessible, but it seemed like a fun idea. Might be a stupid way to keep a blog, but that\'s what makes it fun.', 'display: inline-block; margin-bottom: 1rem;');
     c.groupCollapsed('%cBlog', h[2] + 'font-style: italic;')
     for (const article in articles) {
       c.groupCollapsed(`%c${article}`, h[3]);
