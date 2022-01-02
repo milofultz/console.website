@@ -42,7 +42,14 @@ Donec vel ullamcorper felis.
   const projects = [
     'Proquabet: https://github.com/milofultz/proquabet',
     '{{SWIKI}}: https://github.com/milofultz/swiki',
+    'Everything Else: http://www.milofultz.com/projects',
   ];
+
+  const contact = {
+    email: 'milopfultz@gmail.com',
+    website: 'http://www.milofultz.com',
+    wiki: 'http://www.tinybrain.fans'
+  };
 
   c.log('%cWelcome to Milo\'s website!', h[1]);
   c.log('\tI always wanted to make a website like this. It\'s certainly not accessible, but it seemed like a fun idea. Might be a stupid way to keep a blog, but that\'s what makes it fun.');
@@ -55,6 +62,9 @@ Donec vel ullamcorper felis.
   c.groupEnd();
   c.groupCollapsed('%cProjects', h[2] + 'font-style: italic;');
   projects.forEach(project => c.log(project));
+  c.groupEnd();
+  c.groupCollapsed('%cContact Me!', h[2] + 'font-style: italic;');
+  c.table(contact);
   c.groupEnd();
   c.log('©2022 The Big CHEESE');
 </script>
