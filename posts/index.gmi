@@ -1,0 +1,3 @@
+%% Welcome to Milo's website! %% font-size: 30px; font-weight: bold; display: inline-block; background-image: linear-gradient(to top left, #884, #fff); border: 6px solid red; color: black; padding: 2rem 4rem; margin-bottom: 1rem; %% font-size: 12px; font-weight: normal; display: inline; background-image: initial; border: initial; color: normal; padding: initial; margin-bottom: initial;
+
+I always wanted to make a website like this. It's certainly not accessible, but it seemed like a fun idea. Might be a stupid way to keep a blog, but that's what makes it fun.

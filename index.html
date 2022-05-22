@@ -4,69 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Check your console</title>
+  <link rel="shortcut icon" href="data:,">
+  <script src="render.js"></script>
   <script>
-    /* Quality of Life Improvements */
+    // Create arrays of files to render by group
 
-    const c = console;
-    const rems = [0, 3.375, 2.25, 1.5, 1];
-    const h = rems.map(n => `font-size: ${n}rem; font-weight: bold;`);
-    const bq = 'font-style: italic; margin-left: 2rem';
-    const endBq = 'font-style: normal; margin-left: 0;';
-
-    /* Stupid Functions */
-
-    rainbow = (text, format = '') => {
-      const rainbow = ['color: red;', 'color: orange;', 'color: yellow;', 'color: green;', 'color: blue;', 'color: rebeccapurple;'];
-      let rainbowCounter = 0;
-      const outputWords = [];
-      const outputFormat = [];
-      const words = text.split('');
-      words.forEach(word => {
-        outputWords.push('%c' + word);
-        outputFormat.push(rainbow[rainbowCounter++ % rainbow.length] + format);
-      });
-      return [outputWords.join(''), ...outputFormat];
-    };
-
-    /* Website content */
-
-    const articles = {
-      'Maybe we shouldn\'t have come down from the trees at all': [`\
-The story so far:
-
-%c"In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move." - Douglas Adams`, bq],
-      'Who shit my pants?': ['I stepped out onto the night. It was hot enough fry an egg and it smelled like eggs too… the weather was fine though. I tell you, it ain’t easy being the patsy for a two-bit bum-runner. It wasn’t me what done the dirty deed in my dungarees - you gotta believe me! I got a BM schedule like a veteran jazz singer… I always know when to scat. There was a patty cake on daddy’s cake and I had my baker’s man. I just needed proof… and a shower. I could tell by the smug look on the suspect’s face that he was full of it - and I don’t mean shit, ‘cause all of his was in my khaki’s giving the pleats a good steam. I had his number… and it was two… and it was in my pants. The party was over and I’d danced cheek-to-cheek - thing is, it takes two to salsa and this salsa… was extra chunky.\n\nhttps://www.youtube.com/watch?v=sAqkKbwvD1U'],
-      'What IS a computer?': [...rainbow('i\'m a computer stop all the downloadin.')],
-    };
-
-    const projects = [
-      'Proquabet: https://github.com/milofultz/proquabet',
-      '{{SWIKI}}: https://github.com/milofultz/swiki',
-      'Everything Else: http://www.milofultz.com/projects',
+    const allFiles = [
+      {
+        title: 'Header',
+        files: [
+          'posts/index.gmi',
+        ],
+      },
+      {
+        title: 'Posts',
+        isGroup: true,
+        files: [
+          'posts/trees.gmi',
+          'posts/eric.gmi',
+          'posts/shit.gmi',
+          'posts/projects.gmi',
+        ],
+      },
+      {
+        title: 'Footer',
+        files: [
+          'posts/contact.gmi',
+        ],
+      },
     ];
 
-    const contact = {
-      email: 'milopfultz@gmail.com',
-      website: 'http://www.milofultz.com',
-      wiki: 'http://www.tinybrain.fans'
-    };
+    // Invoke printFiles with each array, including a group name if posts in
+    // array should be included in a console.groupCollapsed()
 
-    c.log('%cWelcome to Milo\'s website!', h[1] + 'display: inline-block; background-image: linear-gradient(to top left, #884, #fff); border: 6px solid red; color: black; padding: 2rem 4rem; margin-bottom: 1rem;');
-    c.log('%c\tI always wanted to make a website like this. It\'s certainly not accessible, but it seemed like a fun idea. Might be a stupid way to keep a blog, but that\'s what makes it fun.', 'display: inline-block; margin-bottom: 1rem;');
-    c.groupCollapsed('%cBlog', h[2] + 'font-style: italic;')
-    for (const article in articles) {
-      c.groupCollapsed(`%c${article}`, h[3]);
-      c.log(...articles[article]);
-      c.groupEnd();
-    }
-    c.groupEnd();
-    c.groupCollapsed('%cProjects', h[2] + 'font-style: italic;');
-    projects.forEach(project => c.log(project));
-    c.groupEnd();
-    c.groupCollapsed('%cContact Me!', h[2] + 'font-style: italic;');
-    c.table(contact);
-    c.groupEnd();
-    c.log('©2022 The Big CHEESE');
+    render(allFiles);
   </script>
 </head>
 </html>
